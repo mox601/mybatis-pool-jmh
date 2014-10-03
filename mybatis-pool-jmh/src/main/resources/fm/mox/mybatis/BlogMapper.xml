@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fm.mox.mybatis.BlogMapper">
+
+    <resultMap type="fm.mox.mybatis.dto.Blog" id="blogmap">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+    </resultMap>
+
+    <select id="selectBlog" parameterType="int" resultMap="blogmap">
+        SELECT * FROM blog WHERE id = #{id}
+    </select>
+
+</mapper>
+
