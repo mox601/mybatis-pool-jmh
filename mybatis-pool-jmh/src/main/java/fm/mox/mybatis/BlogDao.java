@@ -22,16 +22,13 @@ public class BlogDao {
 
     public Blog getById(int anId) {
 
-        SqlSession session = this.sessionFactory.openSession();
-
         Blog blog = Blog.NULL;
-        try {
+
+        try (SqlSession session = this.sessionFactory.openSession()) {
             BlogMapper mapper = session.getMapper(BlogMapper.class);
             blog = mapper.selectBlog(anId);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } finally {
-            session.close();
         }
 
         return blog;
